@@ -1,13 +1,12 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import { Link, useRouter } from 'expo-router';
 
 
-export default function Dashboard() {
+export default function EditRecipe() {
   return (
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>Dashboard</Text>
+      <Text style={styles.text}>Edit Reccipe</Text>
     </View>
   );
 }

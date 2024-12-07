@@ -6,7 +6,7 @@ export default function Index() {
   const router = useRouter();
 
   const handlePress = () => {
-    router.replace('./dashboard');
+    router.replace('./profile');
   }
 
   return (
