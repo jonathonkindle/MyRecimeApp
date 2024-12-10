@@ -1,12 +1,21 @@
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import CustomButton from "@/components/CustomButton";
+import { addRecipe } from "@/utils/db";
+import { useSQLiteContext } from "expo-sqlite";
+import { Text, View, StyleSheet } from "react-native";
 
 
 export default function AddRecipe() {
+
+  const db = useSQLiteContext();
+
   return (
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>Add Recipe</Text>
+      <CustomButton label = "Add Recipe"
+       onPress={() => addRecipe(db, 'chicken', 'a chicken recipe')}
+       >
+      </CustomButton>
     </View>
   );
 }

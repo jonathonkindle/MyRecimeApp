@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { Link, useRouter } from 'expo-router';
+import CustomButton from "@/components/CustomButton";
+import { useSQLiteContext } from "expo-sqlite";
 
 
 export default function Profile() {
-
+  const db = useSQLiteContext();
 
   const router = useRouter();
 
@@ -15,11 +17,10 @@ export default function Profile() {
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>Profile</Text>
-      <Pressable onPress={handlePress}>
-        <Text>Logout</Text>
-      </Pressable>
-      {/* <Link href="/">Logout</Link> */}
+      <CustomButton label = "Logout"
+       onPress={handlePress}
+       >
+      </CustomButton>
     </View>
   );
 }

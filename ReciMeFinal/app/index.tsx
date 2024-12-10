@@ -1,5 +1,6 @@
-import { Link, useRouter } from "expo-router";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import CustomButton from "@/components/CustomButton";
+import { useRouter } from "expo-router";
+import { Text, View, StyleSheet } from "react-native";
 
 export default function Index() {
 
@@ -13,11 +14,10 @@ export default function Index() {
     <View
       style={styles.container}
     >
-      <Text style={styles.text}>ReciMe</Text>
-      <Pressable onPress={handlePress}>
-        <Text>Login</Text>
-      </Pressable>
-      {/* <Link href='./dashboard'>Login</Link> */}
+      <CustomButton label = "Login"
+       onPress={handlePress}
+       >
+      </CustomButton>
     </View>
   );
 }
