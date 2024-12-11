@@ -1,7 +1,7 @@
 import { type SQLiteDatabase } from 'expo-sqlite';
 import * as FileSystem from 'expo-file-system';
 
-interface Recipe {
+export interface RecipeInterface {
     title: string;
     description: string;
   }
@@ -39,6 +39,6 @@ export const addRecipe = async (db: SQLiteDatabase, title: string, description: 
 }
 
 export const getAllRecipes = async (db: SQLiteDatabase) => {
-    return await db.getAllAsync<Recipe>('SELECT * FROM recipes');
+    return await db.getAllAsync<RecipeInterface>('SELECT * FROM recipes');
     // console.log('all recipes: ', result);
 }

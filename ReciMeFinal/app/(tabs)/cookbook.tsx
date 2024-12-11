@@ -1,18 +1,14 @@
-import CustomButton from "@/components/CustomButton";
-import { getAllRecipes } from "@/utils/db";
-import { useSQLiteContext } from "expo-sqlite";
-import { useEffect, useState } from "react";
 import { Text, View, StyleSheet} from "react-native";
-
-interface Recipe {
-  title: string;
-  description: string;
-}
+import { useEffect, useState } from "react";
+import { useSQLiteContext } from "expo-sqlite";
+import CustomButton from "@/components/CustomButton";
+import { getAllRecipes, RecipeInterface } from "@/utils/db";
+import RecipeSlider from "@/components/RecipeSlider";
 
 export default function Cookbook() {
 
   const db = useSQLiteContext();
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<RecipeInterface[]>([]);
 
   useEffect(() => {
     async function setup() {
@@ -22,15 +18,26 @@ export default function Cookbook() {
     setup();
   }, []);
 
+  // return (
+  //   <View
+  //     style={styles.container}
+  //   >
+  //     {recipes.map((recipe, index) => (
+  //       <View style={styles.recipeItemContainer} key={index}>
+  //         <Text>{`${recipe.title} - ${recipe.description}`}</Text>
+  //       </View>
+  //     ))}
+  //   </View>
+  // );
   return (
     <View
       style={styles.container}
     >
-      {recipes.map((recipe, index) => (
-        <View style={styles.recipeItemContainer} key={index}>
-          <Text>{`${recipe.title} - ${recipe.description}`}</Text>
-        </View>
-      ))}
+      <View 
+      // style={styles.recipeItemContainer}
+      >
+        <RecipeSlider itemList = {recipes} />
+      </View>
     </View>
   );
 }
@@ -44,8 +51,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-  },
-  recipeItemContainer: {
-    backgroundColor: "red"
   }
+  // ,
+  // recipeItemContainer: {
+  //   backgroundColor: "red"
+  // }
 })
